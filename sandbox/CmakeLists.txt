@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.14)
+
+project(sandbox)
+
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(SDL2 CONFIG REQUIRED)
+
+add_executable(sandbox main.cpp)
+# TODO: better way of handle includes of sibling projects
+include_directories(../calico)
+target_link_libraries(sandbox PRIVATE calico)
+target_link_libraries(sandbox PUBLIC SDL2::SDL2main)
