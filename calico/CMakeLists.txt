@@ -8,7 +8,7 @@ find_package(SDL2 CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
-add_library(calico STATIC  "Application.h" "Application.cpp" "calico.h")
+add_library(calico STATIC Application.h Application.cpp calico.h event.h calico_window.cpp calico_window.h locator.h)
 target_link_libraries(calico PRIVATE SDL2::SDL2 EnTT::EnTT spdlog::spdlog spdlog::spdlog_header_only)
 
 install(TARGETS calico DESTINATION lib)

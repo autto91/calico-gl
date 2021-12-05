@@ -1,5 +1,7 @@
 #pragma once
 
+#include "calico_window.h"
+#include "event.h"
 #include <SDL2/SDL.h>
 #include <entt/entt.hpp>
 #include <memory>
@@ -7,30 +9,22 @@
 #include <string>
 
 namespace calico {
-struct calico_sdl_event {
-  SDL_Event sdl_event;
-};
 
 class application {
 public:
   application(const std::string &name, int width, int height);
   ~application();
 
-  std::shared_ptr<spdlog::logger> logger;
-
   void run();
 
 private:
-  int window_width_;
-  int window_height_;
-  int target_fps_;
+  int _target_fps;
 
-  bool should_close_;
+  std::unique_ptr<calico_window> _window;
 
-  std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> window_;
-  entt::dispatcher event_bus_;
+  std::shared_ptr<spdlog::logger> _log;
+  std::shared_ptr<entt::dispatcher> _event_bus;
 
-  void register_sdl_event(SDL_Event e);
   void handle_global_sdl_event(const calico_sdl_event &e);
 };
 
