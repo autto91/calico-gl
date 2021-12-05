@@ -17,8 +17,8 @@ calico::application::application(const std::string &name, const int width,
     std::terminate();
   }
 
-  // Create calico_window
-  _window = std::make_unique<calico_window>(name, width, height);
+  // Create window
+  _window = std::make_unique<window>(name, width, height);
 }
 
 calico::application::~application() { SDL_Quit(); }

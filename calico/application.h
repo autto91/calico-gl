@@ -1,6 +1,6 @@
 #pragma once
 
-#include "calico_window.h"
+#include "window.h"
 #include "event.h"
 #include <SDL2/SDL.h>
 #include <entt/entt.hpp>
@@ -20,7 +20,7 @@ public:
 private:
   int _target_fps;
 
-  std::unique_ptr<calico_window> _window;
+  std::unique_ptr<window> _window;
 
   std::shared_ptr<spdlog::logger> _log;
   std::shared_ptr<entt::dispatcher> _event_bus;

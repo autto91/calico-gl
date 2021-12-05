@@ -9,10 +9,10 @@
 
 namespace calico {
 
-class calico_window {
+class window {
 public:
-  calico_window(const std::string &name, int width, int height);
-  ~calico_window();
+  window(const std::string &name, int width, int height);
+  ~window();
 
   void set_should_close(bool val);
   [[nodiscard]] bool should_close() const;
