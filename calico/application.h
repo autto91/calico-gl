@@ -1,7 +1,8 @@
 #pragma once
 
+#include "renderer.h"
 #include "window.h"
-#include "event.h"
+
 #include <SDL2/SDL.h>
 #include <entt/entt.hpp>
 #include <memory>
@@ -15,17 +16,16 @@ public:
   application(const std::string &name, int width, int height);
   ~application();
 
-  void run();
+  void run() const;
 
 private:
-  int _target_fps;
+  int target_fps_;
 
-  std::unique_ptr<window> _window;
+  std::unique_ptr<window> window_;
+  std::unique_ptr<renderer> renderer_;
 
-  std::shared_ptr<spdlog::logger> _log;
-  std::shared_ptr<entt::dispatcher> _event_bus;
-
-  void handle_global_sdl_event(const calico_sdl_event &e);
+  std::shared_ptr<spdlog::logger> log_;
+  std::shared_ptr<entt::dispatcher> event_bus_;
 };
 
 } // namespace calico
